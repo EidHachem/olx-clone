@@ -1,9 +1,44 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
+import PostAdCategoryStep from "@/components/post-ad/PostAdCategoryStep";
+import type { PostAdCategoryId } from "@/lib/postAdCategories";
+import PostAdDynamicCategoryStep from "@/components/post-ad/PostAdDynamicCategoryStep";
+
+type Category = {
+  id: number;
+  name: string;
+  name_l1: string;
+  slug: string;
+  level: number;
+  parentID: number | null;
+  children: Category[];
+};
 
 export default function PostAdPage() {
   const t = useTranslation();
+  const [selectedCategory, setSelectedCategory] =
+    useState<PostAdCategoryId | null>(null);
+
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const res = await fetch("/api/categories");
+        if (!res.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+        const data: Category[] = await res.json();
+        setCategories(data);
+      } catch (err) {
+        console.error("Error loading categories", err);
+      }
+    }
+
+    loadCategories();
+  }, []);
 
   return (
     <div className="w-full">
@@ -16,9 +51,16 @@ export default function PostAdPage() {
           {t("postAd.chooseCategory")}
         </h2>
 
-        <p className="mt-1 text-sm text-gray-600">
-          {t("postAd.hint")}
-        </p>
+        {selectedCategory === null ? (
+          <div className="mt-6">
+            <PostAdCategoryStep onSelectCategory={setSelectedCategory} />
+          </div>
+        ) : (
+          <PostAdDynamicCategoryStep
+            initialCategoryKey={selectedCategory}
+            categories={categories}
+          />
+        )}
       </div>
     </div>
   );

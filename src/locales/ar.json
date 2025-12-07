@@ -38,6 +38,23 @@
     "postAd": {
         "title": "انشر إعلانك",
         "chooseCategory": "اختر الفئة",
-        "hint": "اختر الفئة للبدء بإنشاء إعلانك."
+        "hint": "اختر الفئة للبدء بإنشاء إعلانك.",
+        "subcategories": {
+            "properties": {
+                "apartmentsForSale": "شقق وفيلات للبيع",
+                "apartmentsForRent": "شقق وفيلات للإيجار",
+                "commercialsForSale": "محلات تجارية للبيع",
+                "commercialsForRent": "محلات تجارية للإيجار",
+                "landsForSale": "أراضٍ للبيع",
+                "landsForRent": "أراضٍ للإيجار",
+                "chaletsCabinsForSale": "شاليهات وكبائن للبيع",
+                "chaletsCabinsForRent": "شاليهات وكبائن للإيجار",
+                "buildingsMultipleUnits": "مبانٍ ووحدات متعددة",
+                "roomsForRent": "غرف للإيجار",
+                "vacationRentalsWeekendGetaways": "إيجارات ومنتجعات عطلات"
+            }
+        },
+        "selectedCategoryPlaceholder": "الخطوة التالية (الفئات الفرعية) ستظهر هنا.",
+        "noSubcategories": "لم يتم إعداد فئات فرعية لهذه الفئة بعد."
     }
 }

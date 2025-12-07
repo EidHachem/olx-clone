@@ -8,20 +8,16 @@ export default function PostHeader() {
       <div className="flex items-center gap-4 px-4 py-3 max-w-6xl mx-auto">
         <Link href="/" aria-label="Go back">
           <svg
-            width="24"
-            height="24"
+            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-[#002f34]"
+            stroke="#002f34"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-5 w-5 rtl:rotate-180"
           >
-            <path
-              d="M15 6L9 12L15 18"
-              stroke="#002f34"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <path d="M15 19l-7-7 7-7" />
           </svg>
         </Link>
 

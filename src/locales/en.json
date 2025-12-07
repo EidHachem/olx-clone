@@ -38,6 +38,23 @@
     "postAd": {
         "title": "Post your ad",
         "chooseCategory": "Choose a category",
-        "hint": "Select a category to start creating your ad."
+        "hint": "Select a category to start creating your ad.",
+        "subcategories": {
+            "properties": {
+                "apartmentsForSale": "Apartments & Villas For Sale",
+                "apartmentsForRent": "Apartments & Villas For Rent",
+                "commercialsForSale": "Commercials For Sale",
+                "commercialsForRent": "Commercials For Rent",
+                "landsForSale": "Lands for Sale",
+                "landsForRent": "Lands for Rent",
+                "chaletsCabinsForSale": "Chalets & Cabins For Sale",
+                "chaletsCabinsForRent": "Chalets & Cabins For Rent",
+                "buildingsMultipleUnits": "Buildings & Multiple Units",
+                "roomsForRent": "Rooms for Rent",
+                "vacationRentalsWeekendGetaways": "Vacation Rentals & Weekend Getaways"
+            }
+        },
+        "selectedCategoryPlaceholder": "Next step (subcategories) will appear here.",
+        "noSubcategories": "Subcategories for this category are not configured yet."
     }
 }
