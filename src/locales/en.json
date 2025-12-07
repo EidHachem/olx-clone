@@ -1,0 +1,32 @@
+{
+  "header": {
+    "locationLabel": "Lebanon",
+    "searchPlaceholder": "Find Cars, Mobile Phones and more...",
+    "languageArabic": "العربية",
+    "languageEnglish": "English",
+    "postAd": "Post an ad"
+  },
+  "home": {
+    "allCategories": "All categories",
+    "categories": {
+      "vehicles": "Vehicles",
+      "properties": "Properties",
+      "mobilesAccessories": "Mobiles & Accessories",
+      "electronicsAppliances": "Electronics & Appliances",
+      "furnitureDecor": "Furniture & Decor",
+      "businessesIndustrial": "Businesses & Industrial",
+      "pets": "Pets",
+      "kidsBabies": "Kids & Babies",
+      "sportsEquipment": "Sports & Equipment",
+      "hobbies": "Hobbies",
+      "jobs": "Jobs",
+      "fashionBeauty": "Fashion & Beauty",
+      "services": "Services"
+    }
+  },
+  "postAd": {
+    "title": "Post your ad",
+    "chooseCategory": "Choose a category",
+    "hint": "Select a category to start creating your ad."
+  }
+}
