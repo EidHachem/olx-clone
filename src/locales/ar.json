@@ -1,32 +1,38 @@
 {
-  "header": {
-    "locationLabel": "لبنان",
-    "searchPlaceholder": "ابحث عن سيارات، هواتف محمولة والمزيد...",
-    "languageArabic": "العربية",
-    "languageEnglish": "English",
-    "postAd": "انشر إعلانك"
-  },
-  "home": {
-    "allCategories": "كل الفئات",
-    "categories": {
-      "vehicles": "مركبات",
-      "properties": "عقارات",
-      "mobilesAccessories": "الهواتف والأكسسوارات",
-      "electronicsAppliances": "إلكترونيات وأجهزة منزلية",
-      "furnitureDecor": "أثاث وديكور منزلي",
-      "businessesIndustrial": "تجارة وصناعة",
-      "pets": "حيوانات أليفة",
-      "kidsBabies": "أطفال ورُضّع",
-      "sportsEquipment": "رياضة ومعدات",
-      "hobbies": "هوايات",
-      "jobs": "وظائف",
-      "fashionBeauty": "موضة وجمال",
-      "services": "خدمات"
+    "header": {
+        "locationLabel": "لبنان",
+        "searchPlaceholder": "ابحث عن سيارات، هواتف محمولة والمزيد...",
+        "languageArabic": "العربية",
+        "languageEnglish": "English",
+        "postAd": "انشر إعلانك"
+    },
+    "home": {
+        "allCategories": "كل الفئات",
+        "categories": {
+            "vehicles": "مركبات",
+            "properties": "عقارات",
+            "mobilesAccessories": "الهواتف والأكسسوارات",
+            "electronicsAppliances": "إلكترونيات وأجهزة منزلية",
+            "furnitureDecor": "أثاث وديكور منزلي",
+            "businessesIndustrial": "تجارة وصناعة",
+            "pets": "حيوانات أليفة",
+            "kidsBabies": "أطفال ورُضّع",
+            "sportsEquipment": "رياضة ومعدات",
+            "hobbies": "هوايات",
+            "jobs": "وظائف",
+            "fashionBeauty": "موضة وجمال",
+            "services": "خدمات"
+        },
+        "sections": {
+            "carsForSale": "سيارات للبيع",
+            "apartmentsForRent": "شقق وفيلات للإيجار",
+            "mobilePhones": "الهواتف المحمولة"
+        },
+        "viewMore": "عرض المزيد"
+    },
+    "postAd": {
+        "title": "انشر إعلانك",
+        "chooseCategory": "اختر الفئة",
+        "hint": "اختر الفئة للبدء بإنشاء إعلانك."
     }
-  },
-  "postAd": {
-    "title": "انشر إعلانك",
-    "chooseCategory": "اختر الفئة",
-    "hint": "اختر الفئة للبدء بإنشاء إعلانك."
-  }
 }

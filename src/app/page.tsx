@@ -1,4 +1,5 @@
 import HomeCategories from "@/components/home/HomeCategories";
+import HomeAds from "@/components/home/HomeAds";
 
 export default function HomePage() {
   return (
@@ -6,6 +7,8 @@ export default function HomePage() {
       <section className="mt-6">
         <HomeCategories />
       </section>
+
+      <HomeAds />
     </div>
   );
 }
