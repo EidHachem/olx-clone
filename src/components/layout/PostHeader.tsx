@@ -1,12 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function PostHeader() {
+  const router = useRouter();
+
   return (
     <header className="w-full bg-white border-b border-gray-200">
       <div className="flex items-center gap-4 px-4 py-3 max-w-6xl mx-auto">
-        <Link href="/" aria-label="Go back">
+        <button
+          aria-label="Go back"
+          onClick={() => {
+            if (window.history.length > 1) {
+              router.back();
+            } else {
+              router.push("/");
+            }
+          }}
+          className="p-0 m-0 bg-transparent border-0 cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -19,7 +32,7 @@ export default function PostHeader() {
           >
             <path d="M15 19l-7-7 7-7" />
           </svg>
-        </Link>
+        </button>
 
         <Link href="/" aria-label="OLX Logo">
           <svg

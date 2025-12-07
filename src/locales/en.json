@@ -55,6 +55,29 @@
             }
         },
         "selectedCategoryPlaceholder": "Next step (subcategories) will appear here.",
-        "noSubcategories": "Subcategories for this category are not configured yet."
+        "noSubcategories": "Subcategories for this category are not configured yet.",
+        "sellYourAd": "Sell your ad",
+        "category": "Category",
+        "selectedCategory": "Selected Category",
+        "changeCategory": "Change",
+        "chooseSubcategory": "Choose a subcategory",
+        "uploadImages": "Upload Images",
+        "coverHint": "For the cover picture we recommend using the landscape mode.",
+        "selectPlaceholder": "Select option",
+        "adTitle": "Ad title",
+        "adTitleHint": "Mention the key features of your item (e.g. brand, model, age, type).",
+        "description": "Description",
+        "descriptionHint": "Include condition, features and reason for selling.",
+        "location": "Location",
+        "name": "Name",
+        "phone": "Mobile Phone Number",
+        "contactMethod": "Contact Method",
+        "contactPhone": "Phone Number",
+        "contactChat": "OLX Chat",
+        "contactBoth": "Both",
+        "postNow": "Post now",
+        "validationSuccessTitle": "Ad ready to be submitted",
+        "validationSuccessMessage": "Your form looks good.",
+        "validationErrorTitle": "Please fix the following issues"
     }
 }

@@ -3,17 +3,17 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import PostAdCategoryStep from "@/components/post-ad/PostAdCategoryStep";
-import type { PostAdCategoryId } from "@/lib/postAdCategories";
 import PostAdDynamicCategoryStep from "@/components/post-ad/PostAdDynamicCategoryStep";
+import type { PostAdCategoryId } from "@/lib/postAdCategories";
 
-type Category = {
+type OlxCategory = {
   id: number;
   name: string;
   name_l1: string;
   slug: string;
   level: number;
   parentID: number | null;
-  children: Category[];
+  children: OlxCategory[];
 };
 
 export default function PostAdPage() {
@@ -21,23 +21,20 @@ export default function PostAdPage() {
   const [selectedCategory, setSelectedCategory] =
     useState<PostAdCategoryId | null>(null);
 
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<OlxCategory[] | null>(null);
 
   useEffect(() => {
-    async function loadCategories() {
+    async function fetchCategories() {
       try {
         const res = await fetch("/api/categories");
-        if (!res.ok) {
-          throw new Error("Failed to fetch categories");
-        }
-        const data: Category[] = await res.json();
+        const data: OlxCategory[] = await res.json();
         setCategories(data);
-      } catch (err) {
-        console.error("Error loading categories", err);
+      } catch (e) {
+        console.error("Failed to fetch categories", e);
+        setCategories([]);
       }
     }
-
-    loadCategories();
+    fetchCategories();
   }, []);
 
   return (
@@ -51,7 +48,7 @@ export default function PostAdPage() {
           {t("postAd.chooseCategory")}
         </h2>
 
-        {selectedCategory === null ? (
+        {selectedCategory === null || !categories ? (
           <div className="mt-6">
             <PostAdCategoryStep onSelectCategory={setSelectedCategory} />
           </div>

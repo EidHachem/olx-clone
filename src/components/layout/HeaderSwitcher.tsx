@@ -8,7 +8,7 @@ export default function HeaderSwitcher() {
   const pathname = usePathname();
 
   // use specific header on post-ad page
-  if (pathname === "/post-ad") {
+  if (pathname.startsWith("/post-ad")) {
     return <PostHeader />;
   }
 

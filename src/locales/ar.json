@@ -55,6 +55,29 @@
             }
         },
         "selectedCategoryPlaceholder": "الخطوة التالية (الفئات الفرعية) ستظهر هنا.",
-        "noSubcategories": "لم يتم إعداد فئات فرعية لهذه الفئة بعد."
+        "noSubcategories": "لم يتم إعداد فئات فرعية لهذه الفئة بعد.",
+        "sellYourAd": "أنشر إعلانك للبيع",
+        "category": "الفئة",
+        "selectedCategory": "الفئة المختارة",
+        "changeCategory": "تغيير",
+        "chooseSubcategory": "اختر فئة فرعية",
+        "uploadImages": "تحميل الصور",
+        "coverHint": "ننصح باستخدام الوضع الأفقي لصورة الغلاف.",
+        "selectPlaceholder": "اختر خيارًا",
+        "adTitle": "عنوان الإعلان",
+        "adTitleHint": "اذكر الخصائص الأساسية للعنصر (مثل الماركة، الموديل، العمر...).",
+        "description": "الوصف",
+        "descriptionHint": "اكتب الحالة، المميزات وسبب البيع.",
+        "location": "الموقع",
+        "name": "الاسم",
+        "phone": "رقم الهاتف المحمول",
+        "contactMethod": "طريقة التواصل",
+        "contactPhone": "رقم الهاتف",
+        "contactChat": "دردشة OLX",
+        "contactBoth": "كلاهما",
+        "postNow": "أنشر الآن",
+        "validationSuccessTitle": "إعلانك جاهز للنشر",
+        "validationSuccessMessage": "نموذجك يبدو جيدًا",
+        "validationErrorTitle": "يرجى تصحيح الأخطاء التالية"
     }
 }

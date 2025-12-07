@@ -1,23 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "../layout/LanguageProvider";
 import type { PostAdCategoryId } from "@/lib/postAdCategories";
 
-type Category = {
+type OlxCategory = {
     id: number;
     name: string;
     name_l1: string;
     slug: string;
     level: number;
     parentID: number | null;
-    children: Category[];
+    children: OlxCategory[];
 };
 
 type Props = {
     initialCategoryKey: PostAdCategoryId;
-    categories: Category[];
+    categories: OlxCategory[];
 };
 
 export default function PostAdDynamicCategoryStep({
@@ -27,68 +28,54 @@ export default function PostAdDynamicCategoryStep({
     const t = useTranslation();
     const { language } = useLanguage();
     const isArabic = language === "ar";
+    const router = useRouter();
 
-    const [selectedMainId, setSelectedMainId] = useState<number | null>(null);
+    const mainCategories = categories.filter((c) => c.level === 0);
+    const defaultMain =
+        mainCategories.find((c) => c.slug === initialCategoryKey) ??
+        mainCategories[0];
+
+    const [selectedMainId, setSelectedMainId] = useState<number>(
+        defaultMain?.id ?? mainCategories[0]?.id
+    );
     const [selectedSubId, setSelectedSubId] = useState<number | null>(null);
 
-    const mainCategories = categories.filter(
-        (c) => c.parentID === null || c.level === 0
-    );
+    const selectedMain = categories.find((c) => c.id === selectedMainId)!;
+    const subcategories = selectedMain.children ?? [];
+    const selectedSub =
+        selectedSubId != null
+            ? subcategories.find((s) => s.id === selectedSubId) ?? null
+            : null;
+    const thirdLevelChildren = selectedSub?.children ?? [];
 
-    // Helper for label
-    const getLabel = (cat: Category) =>
+    const getLabel = (cat: OlxCategory) =>
         isArabic ? cat.name_l1 || cat.name : cat.name;
 
-    useEffect(() => {
-        if (!categories.length || !mainCategories.length) return;
+    const handleNavigateToAttributes = (
+        slug: string | undefined,
+        mainCategory: OlxCategory,
+        targetCategory: OlxCategory
+    ) => {
+        if (!slug) return;
 
-        const match =
-            mainCategories.find((c) => c.slug === initialCategoryKey) ??
-            mainCategories[0];
+        const mainLabel = getLabel(mainCategory);
+        const subLabel = getLabel(targetCategory);
 
-        if (match && selectedMainId === null) {
-            setSelectedMainId(match.id);
-            setSelectedSubId(null);
-        }
-    }, [categories, mainCategories, initialCategoryKey, selectedMainId]);
+        const params = new URLSearchParams({
+            slug,
+            mainCategory: mainLabel,
+            subCategory: subLabel,
+        });
 
-    if (!categories.length || !mainCategories.length) {
-        return (
-            <div className="mt-6 grid grid-cols-3 md:grid-cols-[260px,_1fr,_1fr] border border-gray-200 rounded-lg overflow-hidden">
-                <div className="border-r bg-[#f5f5f5]" />
-                <div className="border-r bg-white" />
-                <div className="bg-white" />
-            </div>
-        );
-    }
+        router.push(`/post-ad/attributes?${params.toString()}`);
+    };
 
-    const selectedMain =
-        categories.find((c) => c.id === selectedMainId) ?? mainCategories[0];
-
-    const subcategories = selectedMain?.children ?? [];
-
-    useEffect(() => {
-        if (!subcategories.length) {
-            setSelectedSubId(null);
-            return;
-        }
-
-        const stillValid = subcategories.some((s) => s.id === selectedSubId);
-        if (!stillValid) {
-            setSelectedSubId(subcategories[0].id);
-        }
-    }, [selectedMainId, subcategories, selectedSubId]);
-
-    const selectedSub =
-        subcategories.find((s) => s.id === selectedSubId) ?? null;
-
-    const thirdLevel = selectedSub?.children ?? [];
 
     return (
         <div className="mt-6 grid grid-cols-3 md:grid-cols-[260px,_1fr,_1fr] border border-gray-200 rounded-lg overflow-hidden">
-            <div className="border-r bg-[#f5f5f5]">
+            <div className="border-r border-gray-200 bg-[#f5f5f5]">
                 {mainCategories.map((cat) => {
-                    const active = cat.id === selectedMain.id;
+                    const isActive = cat.id === selectedMainId;
                     const hasChildren = (cat.children?.length ?? 0) > 0;
 
                     return (
@@ -101,7 +88,9 @@ export default function PostAdDynamicCategoryStep({
                             }}
                             className={[
                                 "flex w-full items-center justify-between px-4 py-3 text-sm border-b border-gray-200 last:border-b-0",
-                                active ? "bg-[#e6f6f9] text-[#002f34] font-semibold" : "",
+                                isActive
+                                    ? "bg-[#e6f6f9] text-[#002f34] font-semibold"
+                                    : "bg-[#f5f5f5] text-[#002f34]",
                             ].join(" ")}
                         >
                             <span className={isArabic ? "ml-auto text-right" : ""}>
@@ -115,26 +104,32 @@ export default function PostAdDynamicCategoryStep({
                 })}
             </div>
 
-            <div className="border-r bg-white">
+            <div className="border-r border-gray-200 bg-white">
                 {subcategories.length === 0 ? (
                     <div className="p-6 text-sm text-gray-600">
                         {t("postAd.noSubcategories") ||
-                            "No subcategories available for this category."}
+                            "Subcategories for this category are not configured yet."}
                     </div>
                 ) : (
                     <div className="divide-y divide-gray-200">
                         {subcategories.map((sub) => {
-                            const active = selectedSub?.id === sub.id;
+                            const isActive = sub.id === selectedSubId;
                             const hasChildren = (sub.children?.length ?? 0) > 0;
 
                             return (
                                 <button
                                     key={sub.id}
                                     type="button"
-                                    onClick={() => setSelectedSubId(sub.id)}
+                                    onClick={() => {
+                                        if (hasChildren) {
+                                            setSelectedSubId(sub.id);
+                                        } else {
+                                            handleNavigateToAttributes(sub.slug, selectedMain, sub);
+                                        }
+                                    }}
                                     className={[
-                                        "flex w-full items-center justify-between px-4 py-3 text-sm hover:bg-gray-50 transition",
-                                        active ? "bg-gray-100 font-semibold" : "",
+                                        "flex w-full items-center justify-between px-4 py-3 text-sm hover:bg-[#f5f5f5] transition",
+                                        isActive ? "bg-gray-100 font-semibold" : "",
                                     ].join(" ")}
                                 >
                                     <span className={isArabic ? "ml-auto text-right" : ""}>
@@ -151,15 +146,23 @@ export default function PostAdDynamicCategoryStep({
             </div>
 
             <div className="bg-white">
-                {thirdLevel.length > 0 && (
+                {thirdLevelChildren.length === 0 ? (
+                    <div className="p-6 text-sm text-gray-500">
+                        {t("postAd.chooseSubcategory") || ""}
+                    </div>
+                ) : (
                     <div className="divide-y divide-gray-200">
-                        {thirdLevel.map((child) => {
+                        {thirdLevelChildren.map((child) => {
                             const hasChildren = (child.children?.length ?? 0) > 0;
+
                             return (
                                 <button
                                     key={child.id}
                                     type="button"
-                                    className="flex w-full items-center justify-between px-4 py-3 text-sm hover:bg-gray-50 transition"
+                                    onClick={() => {
+                                        handleNavigateToAttributes(child.slug, selectedMain, child);
+                                    }}
+                                    className="flex w-full items-center justify-between px-4 py-3 text-sm hover:bg-[#f5f5f5] transition"
                                 >
                                     <span className={isArabic ? "ml-auto text-right" : ""}>
                                         {getLabel(child)}
