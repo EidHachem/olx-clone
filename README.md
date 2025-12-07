@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+OLX Lebanon – Mini Clone (Assessment)
 
-## Getting Started
+This project is a simplified OLX Lebanon clone built with Next.js (App Router) and TypeScript.
+It implements the required assessment features: category browsing, dynamic category fields, posting an ad, and Arabic/English localization.
 
-First, run the development server:
+🚀 Tech Stack
 
-```bash
+Next.js (App Router)
+
+TypeScript
+
+Tailwind CSS
+
+SweetAlert2 (form feedback)
+
+Custom i18n (en.json / ar.json)
+
+External APIs:
+
+https://www.olx.com.lb/api/categories
+
+https://www.olx.com.lb/api/categoryFields
+
+📌 Features Implemented
+1. Home + Static Category Cards
+
+Uses local category config (postAdCategories.ts) with icons.
+
+Fully translated (EN/AR).
+
+2. Post an Ad – Step 1 (/post-ad)
+
+Displays static category cards with images.
+
+Selecting a card moves to the dynamic OLX data browser.
+
+3. Post an Ad – Step 2 (Dynamic 3-column category browser)
+
+Categories fetched once from /api/categories.
+
+Three columns:
+
+Main categories
+
+Subcategories
+
+Third-level categories
+
+Clicking the correct category navigates to attributes:
+
+/post-ad/attributes?slug=<categorySlug>&categoryLabel=<name>
+
+4. Post an Ad – Step 3 (/post/attributes)
+
+Fetches dynamic fields from /api/categoryFields.
+
+Renders:
+
+Select fields
+
+Multi-select chips
+
+Number fields
+
+Generic fields (title, description, location, seller name, phone)
+
+Supports Arabic field names (name_l1 / label_l1).
+
+5. Validation
+
+Validation logic lives in lib/postAdValidation.ts.
+
+Checks:
+
+Required dynamic fields
+
+Title, description, location, name, phone, contact method
+
+Shows SweetAlert2 success/error popups.
+
+6. Localization (EN / AR)
+
+Custom translation hook.
+
+Field names and choice labels use Arabic where available.
+
+📁 Project Structure (Important Parts)
+app/
+  post-ad/                   # Step 1 + Step 2
+  post/attributes/           # Step 3 (dynamic form)
+  api/
+    categories/              # Proxy OLX categories API
+    categoryFields/          # Proxy OLX categoryFields API
+
+components/post-ad/
+  PostAdCategoryStep.tsx
+  PostAdDynamicCategoryStep.tsx
+  PostAdAttributesForm.tsx
+
+lib/
+  postAdCategories.ts
+  postAdValidation.ts
+
+locales/
+  en.json
+  ar.json
+
+▶️ Running the Project
+Install dependencies
+npm install
+
+Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Home: http://localhost:3000
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Post an ad: http://localhost:3000/post-ad
