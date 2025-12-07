@@ -28,7 +28,12 @@
             "apartmentsForRent": "Apartments & Villas For Rent",
             "mobilePhones": "Mobile Phones"
         },
-        "viewMore": "View more"
+        "viewMore": "View more",
+        "posted": {
+            "today": "Today",
+            "dayAgoSuffix": "day ago",
+            "daysAgoSuffix": "days ago"
+        }
     },
     "postAd": {
         "title": "Post your ad",

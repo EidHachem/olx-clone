@@ -8,6 +8,7 @@ export type HomeAd = {
     meta: string;
     imageUrl: string;
     section: HomeSectionKey;
+    postedAt: string;
 };
 
 export const HOME_ADS: HomeAd[] = [
@@ -19,6 +20,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "50,000 km • 2021",
         imageUrl: "/images/mock-car-1.webp",
         section: "carsForSale",
+        postedAt: "01-07-2025",
     },
     {
         id: "2",
@@ -28,6 +30,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "95,000 km • 2019",
         imageUrl: "/images/mock-car-2.webp",
         section: "carsForSale",
+        postedAt: "02-12-2025",
     },
     {
         id: "3",
@@ -37,6 +40,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "30,000 km • 2020",
         imageUrl: "/images/mock-car-3.webp",
         section: "carsForSale",
+        postedAt: "15-11-2025",
     },
     {
         id: "4",
@@ -46,6 +50,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "45,000 km • 2018",
         imageUrl: "/images/mock-car-4.webp",
         section: "carsForSale",
+        postedAt: "20-11-2025",
     },
     {
         id: "5",
@@ -55,6 +60,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "2 bed • 100 sqm",
         imageUrl: "/images/mock-apartment-1.jpeg",
         section: "apartmentsForRent",
+        postedAt: "03-12-2025",
     },
     {
         id: "6",
@@ -64,6 +70,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "3 bed • 160 sqm",
         imageUrl: "/images/mock-apartment-2.jpg",
         section: "apartmentsForRent",
+        postedAt: "04-12-2025",
     },
     {
         id: "7",
@@ -73,6 +80,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "Studio • 60 sqm",
         imageUrl: "/images/mock-apartment-3.webp",
         section: "apartmentsForRent",
+        postedAt: "05-12-2025",
     },
     {
         id: "8",
@@ -82,6 +90,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "4 bed • 180 sqm",
         imageUrl: "/images/mock-apartment-4.webp",
         section: "apartmentsForRent",
+        postedAt: "06-12-2025",
     },
     {
         id: "9",
@@ -91,6 +100,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "Used • Excellent condition",
         imageUrl: "/images/mock-phone-1.jpg",
         section: "mobilePhones",
+        postedAt: "07-12-2025",
     },
     {
         id: "10",
@@ -100,6 +110,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "New • 256GB",
         imageUrl: "/images/mock-phone-2.webp",
         section: "mobilePhones",
+        postedAt: "04-12-2025",
     },
     {
         id: "11",
@@ -109,6 +120,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "New • 128GB",
         imageUrl: "/images/mock-phone-3.jpg",
         section: "mobilePhones",
+        postedAt: "07-12-2025",
     },
     {
         id: "12",
@@ -118,6 +130,7 @@ export const HOME_ADS: HomeAd[] = [
         meta: "New • 256GB",
         imageUrl: "/images/mock-phone-4.png",
         section: "mobilePhones",
+        postedAt: "05-12-2025",
     },
 ];
 

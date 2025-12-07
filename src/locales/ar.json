@@ -28,7 +28,12 @@
             "apartmentsForRent": "شقق وفيلات للإيجار",
             "mobilePhones": "الهواتف المحمولة"
         },
-        "viewMore": "عرض المزيد"
+        "viewMore": "عرض المزيد",
+        "posted": {
+            "today": "اليوم",
+            "dayAgoSuffix": "يوم مضى",
+            "daysAgoSuffix": "أيام مضت"
+        }
     },
     "postAd": {
         "title": "انشر إعلانك",

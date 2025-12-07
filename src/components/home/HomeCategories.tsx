@@ -32,18 +32,18 @@ export default function HomeCategories() {
                 {CATEGORIES.map((cat) => (
                     <button
                         key={cat.key}
-                        className="flex flex-col items-center gap-2 text-sm text-[#002f34] focus:outline-none"
+                        className="flex flex-col items-center gap-2 text-sm text-[#002f34] focus:outline-none hover:cursor-pointer"
                     >
                         <div className="h-20 w-20 flex items-center justify-center">
                             <Image
                                 src={cat.icon}
                                 alt={t(`home.categories.${cat.key}`)}
-                                width={72}
-                                height={72}
+                                width={90}
+                                height={90}
                                 className="object-contain"
                             />
                         </div>
-                        <span className="text-center leading-tight font-medium">
+                        <span className="text-center leading-tight font-bold text-lg">
                             {t(`home.categories.${cat.key}`)}
                         </span>
                     </button>
